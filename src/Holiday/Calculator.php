@@ -20,8 +20,6 @@ abstract class Calculator
      */
     abstract public function getHolidays($year);
 
-    private static $easter = array();
-
     /**
      * Provides a DateTime object that represents easter sunday for this year.
      *
@@ -37,15 +35,9 @@ abstract class Calculator
      */
     public static function getEaster($year)
     {
-        if (isset(self::$easter[$year])) {
-            return self::$easter[$year];
-        }
-
-        $easter = new \DateTime("@" . easter_date($year));
-        $easter->setTimeZone(new \DateTimeZone(date_default_timezone_get()));
-
-        self::$easter[$year] = $easter;
-        return self::$easter[$year];
+        $phpmessfixup = date("Y-m-d", easter_date($year));
+        $easter = new \DateTime($phpmessfixup);
+        return new \DateTime($easter->format("Y-m-d"));
     }
 
     /**
@@ -72,5 +64,4 @@ abstract class Calculator
             });
     }
 }
-
 
