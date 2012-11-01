@@ -15,7 +15,7 @@
 namespace Holiday;
 
 const HOLIDAY        = 0b0001;
-const SCHOOL_HOLDIAY = 0b0010;
+const SCHOOL_HOLIDAY = 0b0010;
 const SPECIAL        = 0b0100;
 const ALL            = 0b0111;
 
