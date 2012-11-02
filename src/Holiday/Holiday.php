@@ -14,10 +14,10 @@
  */
 namespace Holiday;
 
-const HOLIDAY        = 0b0001;
-const SCHOOL_HOLIDAY = 0b0010;
-const SPECIAL        = 0b0100;
-const ALL            = 0b0111;
+const HOLIDAY        = 0x01;
+const SCHOOL_HOLIDAY = 0x02;
+const SPECIAL        = 0x04;
+const ALL            = 0x07;
 
 /**
  * Represents a holiday.

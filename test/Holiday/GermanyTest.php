@@ -10,12 +10,13 @@ class GermanyTest extends \PHPUnit_Framework_TestCase
     {
         $de = new Holiday\Germany();
         $this->assertCount(19, $de->getHolidays(2012));
+        $days = $de->getHolidays(2012);
         $this->assertEquals(
             new Holiday\Holiday("6.4.2012", "Karfreitag"),
-            $de->getHolidays(2012)[0]);
+            $days[0]);
         $this->assertEquals(
             new Holiday\Holiday("9.4.2012", "Ostermontag"),
-            $de->getHolidays(2012)[1]);
+            $days[1]);
     }
 
     public function testGermanyBetween()
