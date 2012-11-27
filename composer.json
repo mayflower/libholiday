@@ -1,6 +1,6 @@
 {
     "name": "mayflower/holiday",
-    "version": "0.0.1",
+    "version": "0.5.0",
     "type": "library",
     "license": "LGPL-3",
     "autoload": {
