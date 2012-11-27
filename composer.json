@@ -1,8 +1,14 @@
 {
     "name": "mayflower/holiday",
     "version": "0.5.0",
+    "description": "A library to calculate holidays",
     "type": "library",
-    "license": "LGPL-3",
+    "license": "LGPL-3.0+",
+    "authors": [{
+        "name": "David Soria Parra",
+        "email": "david.soria_parra@mayflower.de",
+        "role": "Developer"
+    }],
     "autoload": {
         "psr-0": {"Holiday": "src/"}
     },
