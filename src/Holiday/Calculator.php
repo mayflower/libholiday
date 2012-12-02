@@ -49,7 +49,7 @@ abstract class Calculator
     {
         $phpmessfixup = date("Y-m-d", easter_date($year));
         $easter = new \DateTime($phpmessfixup);
-        return new \DateTime($easter->format("Y-m-d"));
+        return $easter;
     }
 
     /**
