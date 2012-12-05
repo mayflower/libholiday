@@ -47,7 +47,7 @@ abstract class Calculator
         /* php calculates the easter date on 0:00 in UTC. We need it in
          * our current timezone, so we have to work around by parsing the
          * actual date again */
-        $phpmessfixup = date("Y-m-d", easter_date($year));
+        $phpmessfixup = date("Y-m-d", \easter_date($year));
         $easter = new \DateTime($phpmessfixup);
         return $easter;
     }
