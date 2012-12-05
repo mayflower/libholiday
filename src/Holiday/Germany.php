@@ -22,13 +22,13 @@ class Germany extends Calculator
 
         $easter = self::getEaster($year, $timezone);
         $data[] = new Holiday($easter, "Karfreitag", $timezone);
-        $data[0]->sub(\DateInterval::createFromDateString("2 days"));
+        $data[0]->modify("-2 days");
         $data[] = new Holiday($easter, "Ostermontag", $timezone);
-        $data[1]->add(\DateInterval::createFromDateString("1 day"));
+        $data[1]->modify("+1 day");
         $data[] = new Holiday($easter, "Christi Himmelfahrt", $timezone);
-        $data[2]->add(\DateInterval::createFromDateString("39 days"));
+        $data[2]->modify("+39 days");
         $data[] = new Holiday($easter, "Pfingstmontag", $timezone);
-        $data[3]->add(\DateInterval::createFromDateString("50 days"));
+        $data[3]->modify("+50 days");
 
         $data[] = new Holiday("01.01." . $year, "Neujahrstag", $timezone);
         $data[] = new Holiday("01.05." . $year, "Tag der Arbeit", $timezone);
@@ -45,19 +45,19 @@ class Germany extends Calculator
         $easter = self::getEaster($year, $timezone);
 
         $data[] = new Holiday($easter, "Rosenmontag", $timezone, SPECIAL);
-        $data[0]->sub(\DateInterval::createFromDateString("48 days"));
+        $data[0]->modify("-48 days");
         $data[] = new Holiday($easter, "Fastnacht", $timezone, SPECIAL);
-        $data[1]->sub(\DateInterval::createFromDateString("47 days"));
+        $data[1]->modify("-47 days");
         $data[] = new Holiday($easter, "Aschermittwoch", $timezone, SPECIAL);
-        $data[2]->sub(\DateInterval::createFromDateString("46 days"));
+        $data[2]->modify("-46 days");
         $data[] = new Holiday($easter, "Palmsonntag", $timezone, SPECIAL);
-        $data[3]->sub(\DateInterval::createFromDateString("7 days"));
+        $data[3]->modify("-7 days");
         $data[] = new Holiday($easter, "Gründonnerstag", $timezone, SPECIAL);
-        $data[4]->sub(\DateInterval::createFromDateString("3 days"));
+        $data[4]->modify("-3 days");
         $data[] = new Holiday($easter, "Ostersonntag", $timezone, SPECIAL);
 
         $data[] = new Holiday($easter, "Pfingstsonntag", $timezone, SPECIAL);
-        $data[6]->add(\DateInterval::createFromDateString("49 days"));
+        $data[6]->modify("+49 days");
 
         $data[] = new Holiday("6.12."  . $year, "Nikolaus", $timezone, SPECIAL);
         $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, SPECIAL);
