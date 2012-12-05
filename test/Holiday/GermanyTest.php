@@ -35,10 +35,26 @@ class GermanyTest extends \PHPUnit_Framework_TestCase
     public function testGermanyBetween()
     {
         $de = new Holiday\Germany();
-        $this->assertCount(5,
-            $de->between(
+        $res = $de->between(
                 new \DateTime("1.4.2012"),
-                new \DateTime("30.4.2012")));
+                new \DateTime("30.4.2012"));
+        $this->assertCount(5, $res);
+
+        $mapped = array_values(
+            array_map(function(\DateTime $dt) {
+                return $dt->format("d.m.Y H:i");
+            }, $res));
+
+        $expected = [
+            '01.04.2012 00:00',
+            '05.04.2012 00:00',
+            '06.04.2012 00:00',
+            '08.04.2012 00:00',
+            '09.04.2012 00:00'];
+
+        sort($expected);
+        sort($mapped);
+        $this->assertEquals($expected, $mapped);
 
         $this->assertCount(20, $de->between(
             new \DateTime("1.5.2012"),
