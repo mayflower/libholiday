@@ -39,6 +39,7 @@ class GermanyTest extends \PHPUnit_Framework_TestCase
                 new \DateTime("1.4.2012"),
                 new \DateTime("30.4.2012"));
         $this->assertCount(5, $res);
+        $this->assertContainsOnlyInstancesOf("Holiday\Holiday", $res);
 
         $mapped = array_values(
             array_map(function(\DateTime $dt) {
