@@ -51,6 +51,16 @@ class GermanyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             new Holiday\Holiday("01.05.2012", "Tag der Arbeit"),
             array_pop($res));
-;
+    }
+
+    public function testGermanyPST() {
+        $de = new Holiday\Germany(new \DateTimeZone("PST"));
+        $res = $de->between(
+                new \DateTime("1.5.2012"),
+                new \DateTime("2.5.2012"));
+        $this->assertEquals(
+            new Holiday\Holiday("1.5.2012", "Tag der Arbeit",
+                new \DateTimeZone("PST")),
+            array_pop($res));
     }
 }

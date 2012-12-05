@@ -20,6 +20,11 @@ namespace Holiday;
  */
 abstract class Calculator
 {
+    private $timezone;
+    public function __construct(\DateTimeZone $timezone = null) {
+        $this->timezone = $timezone;
+    }
+
     /**
      * The template method to be used in the between calculation.
      *
@@ -30,7 +35,7 @@ abstract class Calculator
      * @param int $year The year to get the holidays for.
      * @return array
      */
-    abstract public function getHolidays($year);
+    abstract public function getHolidays($year, $timezone = null);
 
     /**
      * Provides a DateTime object that represents easter sunday for this year.
@@ -42,7 +47,7 @@ abstract class Calculator
      *
      * @return DateTime
      */
-    public static function getEaster($year)
+    public static function getEaster($year, $timezone = null)
     {
         /* php calculates the easter date on 0:00 in UTC. We need it in
          * our current timezone, so we have to work around by parsing the
@@ -67,7 +72,7 @@ abstract class Calculator
         $holidays  = array();
         for ($yearcount = 0; $yearcount <= $interval->y; $yearcount++) {
             $year     = $startyear + $yearcount;
-            $holidays = array_merge($holidays, $this->getHolidays($year));
+            $holidays = array_merge($holidays, $this->getHolidays($year, $this->timezone));
         }
 
         return array_filter($holidays,

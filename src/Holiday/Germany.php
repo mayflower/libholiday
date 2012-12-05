@@ -16,52 +16,52 @@ namespace Holiday;
 
 class Germany extends Calculator
 {
-    public function getHolidays($year)
+    public function getHolidays($year, $timezone = null)
     {
         $data   = array();
 
-        $easter = self::getEaster($year);
-        $data[] = new Holiday($easter, "Karfreitag");
+        $easter = self::getEaster($year, $timezone);
+        $data[] = new Holiday($easter, "Karfreitag", $timezone);
         $data[0]->sub(\DateInterval::createFromDateString("2 days"));
-        $data[] = new Holiday($easter, "Ostermontag");
+        $data[] = new Holiday($easter, "Ostermontag", $timezone);
         $data[1]->add(\DateInterval::createFromDateString("1 day"));
-        $data[] = new Holiday($easter, "Christi Himmelfahrt");
+        $data[] = new Holiday($easter, "Christi Himmelfahrt", $timezone);
         $data[2]->add(\DateInterval::createFromDateString("39 days"));
-        $data[] = new Holiday($easter, "Pfingstmontag");
+        $data[] = new Holiday($easter, "Pfingstmontag", $timezone);
         $data[3]->add(\DateInterval::createFromDateString("50 days"));
 
-        $data[] = new Holiday("01.01." . $year, "Neujahrstag");
-        $data[] = new Holiday("01.05." . $year, "Tag der Arbeit");
-        $data[] = new Holiday("03.10." . $year, "Tag der deutschen Einheit");
-        $data[] = new Holiday("25.12." . $year, "1. Weihnachtsfeiertag");
-        $data[] = new Holiday("26.12." . $year, "2. Weihnachtsfeiertag");
+        $data[] = new Holiday("01.01." . $year, "Neujahrstag", $timezone);
+        $data[] = new Holiday("01.05." . $year, "Tag der Arbeit", $timezone);
+        $data[] = new Holiday("03.10." . $year, "Tag der deutschen Einheit", $timezone);
+        $data[] = new Holiday("25.12." . $year, "1. Weihnachtsfeiertag", $timezone);
+        $data[] = new Holiday("26.12." . $year, "2. Weihnachtsfeiertag", $timezone);
 
-        return array_merge($data, $this->getSpecial($year));
+        return array_merge($data, $this->getSpecial($year, $timezone));
     }
 
-    private function getSpecial($year)
+    private function getSpecial($year, $timezone)
     {
         $data   = array();
-        $easter = self::getEaster($year);
+        $easter = self::getEaster($year, $timezone);
 
-        $data[] = new Holiday($easter, "Rosenmontag", null, SPECIAL);
+        $data[] = new Holiday($easter, "Rosenmontag", $timezone, SPECIAL);
         $data[0]->sub(\DateInterval::createFromDateString("48 days"));
-        $data[] = new Holiday($easter, "Fastnacht", null, SPECIAL);
+        $data[] = new Holiday($easter, "Fastnacht", $timezone, SPECIAL);
         $data[1]->sub(\DateInterval::createFromDateString("47 days"));
-        $data[] = new Holiday($easter, "Aschermittwoch", null, SPECIAL);
+        $data[] = new Holiday($easter, "Aschermittwoch", $timezone, SPECIAL);
         $data[2]->sub(\DateInterval::createFromDateString("46 days"));
-        $data[] = new Holiday($easter, "Palmsonntag", null, SPECIAL);
+        $data[] = new Holiday($easter, "Palmsonntag", $timezone, SPECIAL);
         $data[3]->sub(\DateInterval::createFromDateString("7 days"));
-        $data[] = new Holiday($easter, "Gründonnerstag", null, SPECIAL);
+        $data[] = new Holiday($easter, "Gründonnerstag", $timezone, SPECIAL);
         $data[4]->sub(\DateInterval::createFromDateString("3 days"));
-        $data[] = new Holiday($easter, "Ostersonntag", null, SPECIAL);
+        $data[] = new Holiday($easter, "Ostersonntag", $timezone, SPECIAL);
 
-        $data[] = new Holiday($easter, "Pfingstsonntag", null, SPECIAL);
+        $data[] = new Holiday($easter, "Pfingstsonntag", $timezone, SPECIAL);
         $data[6]->add(\DateInterval::createFromDateString("49 days"));
 
-        $data[] = new Holiday("6.12."  . $year, "Nikolaus", null, SPECIAL);
-        $data[] = new Holiday("24.12." . $year, "Heilig Abend", null, SPECIAL);
-        $data[] = new Holiday("31.12." . $year, "Silvester", null, SPECIAL);
+        $data[] = new Holiday("6.12."  . $year, "Nikolaus", $timezone, SPECIAL);
+        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, SPECIAL);
+        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, SPECIAL);
 
         return $data;
     }

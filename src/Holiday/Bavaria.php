@@ -16,18 +16,18 @@ namespace Holiday;
 
 class Bavaria extends Germany
 {
-    public function getHolidays($year)
+    public function getHolidays($year, $timezone = null)
     {
-        $easter = self::getEaster($year);
-        $data   = parent::getHolidays($year);
-        $data[] = new Holiday("6.1." . $year, "Dreikönigstag");
+        $easter = self::getEaster($year, $timezone);
+        $data   = parent::getHolidays($year, $timezone);
+        $data[] = new Holiday("6.1." . $year, "Dreikönigstag", $timezone);
 
-        $date   = new Holiday($easter, "Fronleichnam");
+        $date   = new Holiday($easter, "Fronleichnam", $timezone);
         $date->add(\DateInterval::createFromDateString("60 days"));
         $data[] = $date;
 
-        $data[] = new Holiday("15.8." . $year, "Mariä Himmelfahrt");
-        $data[] = new Holiday("1.11." . $year, "Allerheiligen");
+        $data[] = new Holiday("15.8." . $year, "Mariä Himmelfahrt", $timezone);
+        $data[] = new Holiday("1.11." . $year, "Allerheiligen", $timezone);
 
         return $data;
     }
