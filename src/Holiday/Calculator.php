@@ -38,15 +38,15 @@ abstract class Calculator
      * The DateTime object is always set to the current default timezone and
      * not UTC and time is set 0:00.
      *
-     * The method tries to reuse already initialized objects. If you need
-     * to modify the object make sure you create a copy.
-     *
      * @param int $year The year for which to calculcate the easter sunday date.
      *
      * @return DateTime
      */
     public static function getEaster($year)
     {
+        /* php calculates the easter date on 0:00 in UTC. We need it in
+         * our current timezone, so we have to work around by parsing the
+         * actual date again */
         $phpmessfixup = date("Y-m-d", easter_date($year));
         $easter = new \DateTime($phpmessfixup);
         return $easter;
