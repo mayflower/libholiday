@@ -44,24 +44,24 @@ class Germany extends Calculator
         $data   = array();
         $easter = self::getEaster($year, $timezone);
 
-        $data[] = new Holiday($easter, "Rosenmontag", $timezone, SPECIAL);
+        $data[] = new Holiday($easter, "Rosenmontag", $timezone, NOTABLE);
         $data[0]->modify("-48 days");
-        $data[] = new Holiday($easter, "Fastnacht", $timezone, SPECIAL);
+        $data[] = new Holiday($easter, "Fastnacht", $timezone, NOTABLE);
         $data[1]->modify("-47 days");
-        $data[] = new Holiday($easter, "Aschermittwoch", $timezone, SPECIAL);
+        $data[] = new Holiday($easter, "Aschermittwoch", $timezone, NOTABLE);
         $data[2]->modify("-46 days");
-        $data[] = new Holiday($easter, "Palmsonntag", $timezone, SPECIAL);
+        $data[] = new Holiday($easter, "Palmsonntag", $timezone, NOTABLE);
         $data[3]->modify("-7 days");
-        $data[] = new Holiday($easter, "Gründonnerstag", $timezone, SPECIAL);
+        $data[] = new Holiday($easter, "Gründonnerstag", $timezone, NOTABLE);
         $data[4]->modify("-3 days");
-        $data[] = new Holiday($easter, "Ostersonntag", $timezone, SPECIAL);
+        $data[] = new Holiday($easter, "Ostersonntag", $timezone, NOTABLE);
 
-        $data[] = new Holiday($easter, "Pfingstsonntag", $timezone, SPECIAL);
+        $data[] = new Holiday($easter, "Pfingstsonntag", $timezone, NOTABLE);
         $data[6]->modify("+49 days");
 
-        $data[] = new Holiday("6.12."  . $year, "Nikolaus", $timezone, SPECIAL);
-        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, SPECIAL);
-        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, SPECIAL);
+        $data[] = new Holiday("6.12."  . $year, "Nikolaus", $timezone, NOTABLE);
+        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, NOTABLE);
+        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, NOTABLE);
 
         return $data;
     }

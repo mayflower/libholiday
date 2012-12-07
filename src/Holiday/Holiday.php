@@ -16,7 +16,7 @@ namespace Holiday;
 
 const HOLIDAY        = "holiday";
 const SCHOOL_HOLIDAY = "school";
-const SPECIAL        = "special";
+const NOTABLE        = "notable";
 
 /**
  * Represents a holiday.
