@@ -101,8 +101,6 @@ class GermanyTest extends \PHPUnit_Framework_TestCase
         $correct = $de->between(
             new \DateTime("2011-05-02"),
             new \DateTime("2012-05-01"));
-        $fail    = array_map(function($d) { return $d->format("Y-m-d") . " " . $d->name; }, $fail);
-        $correct = array_map(function($d) { return $d->format("Y-m-d") . " " . $d->name; }, $correct);
         $this->assertNotEquals(12, count($fail));
         $this->assertNotEquals(12, count($correct));
         $this->assertEquals(23, count($fail));
