@@ -39,7 +39,7 @@ class Holiday extends \DateTime
      * @param int          $type     HOLIDAY, SCHOOL_HOLIDAY or SPECIAL
      * @param float        $weight   Positive float.
      */
-    public function __construct($time, $name, \DateTimeZone $timezone = null, $type = HOLIDAY, $weight = 1.0)
+    public function __construct($time, $name, \DateTimeZone $timezone = null, $type = HOLIDAY, $weight = null)
     {
         if ($time instanceof \DateTime) {
             parent::__construct($time->format("Y-m-d"), $time->getTimeZone());
@@ -52,8 +52,8 @@ class Holiday extends \DateTime
         }
 
         $this->weight = $weight;
-        if ($type & HOLIDAY !== HOLIDAY) {
-            $this->weight = 0.0;
+        if (null === $weight) {
+            $this->weight = ($type === HOLIDAY) ? 1.0 : 0.0;
         }
 
         $this->type = $type;

@@ -83,4 +83,13 @@ class GermanyTest extends \PHPUnit_Framework_TestCase
                 new \DateTimeZone("PST")),
             array_pop($res));
     }
+
+    public function testWeights() {
+        $de       = new Holiday\Germany();
+        $holidays = $de->between(
+            new \DateTime("2012-12-24"),
+            new \DateTime("2012-12-24"));
+        $holiday  = array_pop($holidays);
+        $this->assertEquals(0.5, $holiday->weight, 'Heilig Abend weight', 0.001);
+    }
 }
