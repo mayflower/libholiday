@@ -63,8 +63,8 @@ class Germany extends Calculator
         $data[6]->modify("+49 days");
 
         $data[] = new Holiday("6.12."  . $year, "Nikolaus", $timezone, NOTABLE);
-        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, NOTABLE);
-        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, NOTABLE);
+        $data[] = new Holiday("24.12." . $year, "Heilig Abend", $timezone, NOTABLE, 0.5);
+        $data[] = new Holiday("31.12." . $year, "Silvester", $timezone, NOTABLE, 0.5);
 
         return $data;
     }
