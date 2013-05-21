@@ -69,11 +69,10 @@ abstract class Calculator
     public function between(\DateTime $start, \DateTime $end)
     {
         $startyear = (int) $start->format("Y");
-        $interval  = $start->diff($end);
+        $endyear   = (int) $end->format("Y");
         $holidays  = array();
-        for ($yearcount = 0; $yearcount <= $interval->y; $yearcount++) {
-            $year     = $startyear + $yearcount;
-            $holidays = array_merge($holidays, $this->getHolidays($year, $this->timezone));
+        for ($y = $startyear; $y <= $end->format("Y"); $y++) {
+            $holidays = array_merge($holidays, $this->getHolidays($y, $this->timezone));
         }
 
         return array_filter($holidays,
