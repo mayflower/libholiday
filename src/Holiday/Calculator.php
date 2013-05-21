@@ -71,7 +71,7 @@ abstract class Calculator
         $startyear = (int) $start->format("Y");
         $endyear   = (int) $end->format("Y");
         $holidays  = array();
-        for ($y = $startyear; $y <= $end->format("Y"); $y++) {
+        for ($y = $startyear; $y <= $endyear; $y++) {
             $holidays = array_merge($holidays, $this->getHolidays($y, $this->timezone));
         }
 
