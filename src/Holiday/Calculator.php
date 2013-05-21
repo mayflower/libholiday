@@ -51,11 +51,10 @@ abstract class Calculator
      */
     protected function getEaster($year)
     {
-        /* php calculates the easter date on 0:00 in UTC. We need it in
-         * our current timezone, so we have to work around by parsing the
-         * actual date again */
-        $phpmessfixup = date("Y-m-d", \easter_date($year));
-        $easter = new \DateTime($phpmessfixup, $this->timezone);
+        $easter = new \DateTime('now', $this->timezone);
+        $easter->setDate($year, 3, 21);
+        $easter->setTime(0,0,0);
+        $easter->modify('+' . \easter_days($year) . 'days');
         return $easter;
     }
 
