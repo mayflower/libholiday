@@ -16,10 +16,12 @@ namespace Holiday;
 
 class Bavaria extends Germany
 {
-    public function getHolidays($year, $timezone = null)
+    protected function getHolidays($year)
     {
-        $easter = self::getEaster($year, $timezone);
-        $data   = parent::getHolidays($year, $timezone);
+        $timezone = $this->timezone;
+
+        $easter = $this->getEaster($year);
+        $data   = parent::getHolidays($year);
         $data[] = new Holiday("6.1." . $year, "Dreikönigstag", $timezone);
 
         $date   = new Holiday($easter, "Fronleichnam", $timezone);

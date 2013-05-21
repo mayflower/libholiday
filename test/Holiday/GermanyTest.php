@@ -21,9 +21,12 @@ class GermanyTest extends \PHPUnit_Framework_TestCase
 {
     public function testGermanyCalculations()
     {
+        $start = new \DateTime("2012-01-01");
+        $end   = new \DateTime("2012-12-31");
+
         $de = new Holiday\Germany();
-        $this->assertCount(19, $de->getHolidays(2012));
-        $days = $de->getHolidays(2012);
+        $this->assertCount(19, $de->between($start, $end));
+        $days = $de->between($start, $end);
         $this->assertEquals(
             new Holiday\Holiday("6.4.2012", "Karfreitag"),
             $days[0]);

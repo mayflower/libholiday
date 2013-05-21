@@ -16,11 +16,12 @@ namespace Holiday;
 
 class Germany extends Calculator
 {
-    public function getHolidays($year, $timezone = null)
+    protected function getHolidays($year)
     {
-        $data   = array();
+        $timezone = $this->timezone;
 
-        $easter = self::getEaster($year, $timezone);
+        $data   = array();
+        $easter = $this->getEaster($year);
         $data[] = new Holiday($easter, "Karfreitag", $timezone);
         $data[0]->modify("-2 days");
         $data[] = new Holiday($easter, "Ostermontag", $timezone);
@@ -39,10 +40,12 @@ class Germany extends Calculator
         return array_merge($data, $this->getSpecial($year, $timezone));
     }
 
-    private function getSpecial($year, $timezone)
+    private function getSpecial($year)
     {
+        $timezone = $this->timezone;
+
         $data   = array();
-        $easter = self::getEaster($year, $timezone);
+        $easter = $this->getEaster($year);
 
         $data[] = new Holiday($easter, "Rosenmontag", $timezone, NOTABLE);
         $data[0]->modify("-48 days");

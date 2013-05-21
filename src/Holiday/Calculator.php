@@ -20,7 +20,7 @@ namespace Holiday;
  */
 abstract class Calculator
 {
-    private $timezone;
+    protected $timezone;
     public function __construct(\DateTimeZone $timezone = null) {
         $this->timezone = $timezone;
     }
@@ -35,7 +35,7 @@ abstract class Calculator
      * @param int $year The year to get the holidays for.
      * @return array
      */
-    abstract public function getHolidays($year, $timezone = null);
+    abstract protected function getHolidays($year);
 
     /**
      * Provides a DateTime object that represents easter sunday for this year.
@@ -46,8 +46,10 @@ abstract class Calculator
      * @param int $year The year for which to calculcate the easter sunday date.
      *
      * @return DateTime
+     *
+     * TODO: add timezone calculation
      */
-    public static function getEaster($year, $timezone = null)
+    protected function getEaster($year)
     {
         /* php calculates the easter date on 0:00 in UTC. We need it in
          * our current timezone, so we have to work around by parsing the

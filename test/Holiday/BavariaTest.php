@@ -20,7 +20,7 @@ require_once "vendor/autoload.php";
 class BavariaTest extends \PHPUnit_Framework_TestCase
 {
     public function testEasterBug() {
-        $by       = new Holiday\Bavaria();
+        $by       = new Holiday\Bavaria(new \DateTimeZone("UTC"));
         $holidays = $by->between(
             new \DateTime("2012-04-09"),
             new \DateTime("2012-04-09"));
