@@ -20,13 +20,15 @@ require_once "vendor/autoload.php";
 class BavariaTest extends \PHPUnit_Framework_TestCase
 {
     public function testEasterBug() {
-        $by       = new Holiday\Bavaria(new \DateTimeZone("UTC"));
+        $utc      = new \DateTimeZone("UTC");
+        $by       = new Holiday\Bavaria($utc);
         $holidays = $by->between(
-            new \DateTime("2012-04-09"),
-            new \DateTime("2012-04-09"));
+            new \DateTime("2012-04-09", $utc),
+            new \DateTime("2012-04-09", $utc));
 
         $holiday = array_pop($holidays);
         $this->assertEquals("Ostermontag", $holiday->name);
         $this->assertEquals("2012-04-09 00:00:00", $holiday->format("Y-m-d H:i:s"));
+        $this->assertEquals("UTC", $holiday->getTimeZone()->getName());
     }
 }

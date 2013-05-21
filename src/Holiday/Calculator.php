@@ -55,7 +55,7 @@ abstract class Calculator
          * our current timezone, so we have to work around by parsing the
          * actual date again */
         $phpmessfixup = date("Y-m-d", \easter_date($year));
-        $easter = new \DateTime($phpmessfixup);
+        $easter = new \DateTime($phpmessfixup, $this->timezone);
         return $easter;
     }
 
