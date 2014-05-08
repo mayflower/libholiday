@@ -68,6 +68,10 @@ abstract class Calculator
      */
     public function between(\DateTime $start, \DateTime $end)
     {
+        // Comparing DateTime also looks at the time. So we need to make sure the time is 0.
+        $start->setTime(0,0,0);
+        $end->setTime(0,0,0);
+        
         $startyear = (int) $start->format("Y");
         $endyear   = (int) $end->format("Y");
         $holidays  = array();
