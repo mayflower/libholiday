@@ -21,6 +21,7 @@ namespace Holiday;
 abstract class Calculator
 {
     protected $timezone;
+
     public function __construct(\DateTimeZone $timezone = null) {
         $this->timezone = $timezone;
     }
@@ -53,7 +54,7 @@ abstract class Calculator
     {
         $easter = new \DateTime('now', $this->timezone);
         $easter->setDate($year, 3, 21);
-        $easter->setTime(0,0,0);
+        $easter->setTime(0, 0, 0);
         $easter->modify('+' . \easter_days($year) . 'days');
         return $easter;
     }
@@ -69,9 +70,9 @@ abstract class Calculator
     public function between(\DateTime $start, \DateTime $end)
     {
         // Comparing DateTime also looks at the time. So we need to make sure the time is 0.
-        $start->setTime(0,0,0);
-        $end->setTime(0,0,0);
-        
+        $start->setTime(0, 0, 0);
+        $end->setTime(0, 0, 0);
+
         $startyear = (int) $start->format("Y");
         $endyear   = (int) $end->format("Y");
         $holidays  = array();
@@ -83,6 +84,11 @@ abstract class Calculator
             function(\DateTime $dt) use ($start, $end) {
                 return $dt >= $start && $dt <= $end;
             });
+    }
+
+    public function isHoliday(\DateTime $date)
+    {
+        return $this->between($date, $date);
     }
 }
 
