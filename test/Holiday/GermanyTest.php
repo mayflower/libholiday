@@ -49,12 +49,12 @@ class GermanyTest extends \PHPUnit_Framework_TestCase
                 return $dt->format("d.m.Y H:i");
             }, $res));
 
-        $expected = [
+        $expected = array(
             '01.04.2012 00:00',
             '05.04.2012 00:00',
             '06.04.2012 00:00',
             '08.04.2012 00:00',
-            '09.04.2012 00:00'];
+            '09.04.2012 00:00');
 
         sort($expected);
         sort($mapped);
