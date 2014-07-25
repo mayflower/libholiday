@@ -69,7 +69,10 @@ abstract class Calculator
      */
     public function between(\DateTime $start, \DateTime $end)
     {
-        // Comparing DateTime also looks at the time. So we need to make sure the time is 0.
+        // Comparing DateTime also looks at the time. So we need to make sure the time is 0,
+        // but don't modify the original referenced DateTime parameters
+        $start = clone $start;
+        $end = clone $end;
         $start->setTime(0, 0, 0);
         $end->setTime(0, 0, 0);
 
