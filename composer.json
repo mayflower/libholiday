@@ -1,6 +1,5 @@
 {
     "name": "mayflower/holiday",
-    "version": "0.5.1-dev",
     "description": "A library to calculate holidays",
     "type": "library",
     "license": "LGPL-3.0+",
