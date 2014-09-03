@@ -18,155 +18,37 @@ use DateTime;
 
 class America extends Calculator
 {
-	/**
-	 * The template method to be used in the between calculation.
-	 *
-	 * Returns an array of Holidays.
-	 *
-	 * @see between()
-	 *
-	 * @param int $year The year to get the holidays for.
-	 * @return array
-	 */
-	protected function getHolidays($year)
-	{
-		$holidays = array();
+    /**
+     * The template method to be used in the between calculation.
+     *
+     * Returns an array of Holidays.
+     *
+     * @see between()
+     *
+     * @param int $year The year to get the holidays for.
+     * @return array
+     */
+    protected function getHolidays($year)
+    {
+        $christmas = new DateTime($year.'-12-25', $this->timezone);
+        $thanksgiving = new DateTime('fourth Thursday of November '.$year, $this->timezone);
 
-		$holidays[] = new Holiday($this->getChristmas($year), 'Christmas', $this->timezone);
-		$holidays[] = new Holiday($this->getChristmas($year)->modify('-1 day'), 'Christmas Eve', $this->timezone);
-		$holidays[] = new Holiday($this->getThanksgiving($year), 'Thanksgiving Day', $this->timezone);
-		$holidays[] = new Holiday($this->getThanksgiving($year)->modify('+1 day'), 'Thanksgiving Adam', $this->timezone);
-		$holidays[] = new Holiday($this->getNewYearsDay($year), "New Year's Day", $this->timezone);
-		$holidays[] = new Holiday($this->getIndependenceDay($year), 'Independence Day', $this->timezone);
-		$holidays[] = new Holiday($this->getMLKDay($year), 'Martin Luther King, Jr. Day', $this->timezone);
-		$holidays[] = new Holiday($this->getPresidentsDay($year), "President's Day", $this->timezone);
-		$holidays[] = new Holiday($this->getMemorialDay($year), 'Memorial Day', $this->timezone);
-		$holidays[] = new Holiday($this->getLaborDay($year), 'Labor Day', $this->timezone);
-		$holidays[] = new Holiday($this->getVeteransDay($year), 'Veterans Day', $this->timezone);
-		$holidays[] = new Holiday($this->getColumbusDay($year), 'Columbus Day', $this->timezone);
+        $holidays = array(
+            new Holiday(clone $christmas, 'Christmas', $this->timezone),
+            new Holiday(clone $thanksgiving, 'Thanksgiving Day', $this->timezone),
+            new Holiday(new DateTime($year.'-1-1', $this->timezone), "New Year's Day", $this->timezone),
+            new Holiday(new DateTime($year.'-7-4', $this->timezone), 'Independence Day', $this->timezone),
+            new Holiday(new DateTime($year.'-11-11', $this->timezone), 'Veterans Day', $this->timezone),
+            new Holiday(new DateTime('second Monday of October '.$year, $this->timezone), 'Columbus Day', $this->timezone),
+            new Holiday(new DateTime('first Monday of September '.$year, $this->timezone), 'Labor Day', $this->timezone),
+            new Holiday(new DateTime('last Monday of May '.$year, $this->timezone), 'Memorial Day', $this->timezone),
+            new Holiday(new DateTime('third Monday of February '.$year, $this->timezone), "President's Day", $this->timezone),
+            new Holiday(new DateTime('third Monday of January '.$year, $this->timezone), 'Martin Luther King, Jr. Day', $this->timezone),
+        );
 
-		return $holidays;
-	}
+        $holidays[] = new Holiday($christmas->modify('-1 day'), 'Christmas Eve', $this->timezone);
+        $holidays[] = new Holiday($thanksgiving->modify('+1 day'), 'Thanksgiving Adam', $this->timezone);
 
-	/**
-	 * Get Veterans Day: November 11th
-	 *
-	 * @param $year
-	 * @return DateTime
-	 */
-	protected function getVeteransDay($year)
-	{
-		$veteransDay = new DateTime('now', $this->timezone);
-		$veteransDay->setDate($year, 11, 11);
-		$veteransDay->setTime(0, 0, 0);
-		return $veteransDay;
-	}
-
-	/**
-	 * Get American Independence Day: July 4th
-	 *
-	 * @param $year
-	 * @return DateTime
-	 */
-	protected function getIndependenceDay($year)
-	{
-		$independenceDay = new DateTime('now', $this->timezone);
-		$independenceDay->setDate($year, 7, 4);
-		$independenceDay->setTime(0, 0, 0);
-		return $independenceDay;
-	}
-
-	/**
-	 * Get New Years Day: January 1st
-	 *
-	 * @param $year
-	 * @return DateTime
-	 */
-	protected function getNewYearsDay($year)
-	{
-		$newYearsDay = new DateTime('now', $this->timezone);
-		$newYearsDay->setDate($year, 1, 1);
-		$newYearsDay->setTime(0, 0, 0);
-		return $newYearsDay;
-	}
-
-	/**
-	 * Get Christmas Day: December 25th
-	 *
-	 * @param $year
-	 * @return DateTime
-	 */
-	protected function getChristmas($year)
-	{
-		$christmas = new DateTime('now', $this->timezone);
-		$christmas->setDate($year, 12, 25);
-		$christmas->setTime(0, 0, 0);
-		return $christmas;
-	}
-
-	/**
-	 * Get Columbus Day: Second Monday in October
-	 *
-	 * @param $year
-	 * @return DateTime
-	 */
-	protected function getColumbusDay($year)
-	{
-		return DateTime::createFromFormat('U', strtotime('second Monday of October '.$year), $this->timezone);
-	}
-
-	/**
-	 * Get Labor Day: First Monday in September
-	 *
-	 * @param $year
-	 * @return DateTime
-	 */
-	protected function getLaborDay($year)
-	{
-		return DateTime::createFromFormat('U', strtotime('first Monday of September '.$year), $this->timezone);
-	}
-
-	/**
-	 * Get Memorial Day: Last Monday in May
-	 *
-	 * @param $year
-	 * @return DateTime
-	 */
-	protected function getMemorialDay($year)
-	{
-		return DateTime::createFromFormat('U', strtotime('last Monday of May '.$year), $this->timezone);
-	}
-
-	/**
-	 * Get American Presidents Day: Third Monday in February
-	 *
-	 * @param $year
-	 * @return DateTime
-	 */
-	protected function getPresidentsDay($year)
-	{
-		return DateTime::createFromFormat('U', strtotime('third Monday of February '.$year), $this->timezone);
-	}
-
-	/**
-	 * Get Martin Luther King, Jr. Day: Third Monday of January
-	 *
-	 * @param $year
-	 * @return DateTime
-	 */
-	protected function getMLKDay($year)
-	{
-		return DateTime::createFromFormat('U', strtotime('third Monday of January '.$year), $this->timezone);
-	}
-
-	/**
-	 * Get Thanksgiving Day: Fourth Thursday in November
-	 *
-	 * @param $year
-	 * @return DateTime
-	 */
-	protected function getThanksgiving($year)
-	{
-		return DateTime::createFromFormat('U', strtotime('fourth Thursday of November '.$year), $this->timezone);
-	}
+        return $holidays;
+    }
 }
