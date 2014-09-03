@@ -19,17 +19,6 @@ use DateTime;
 class America extends Calculator
 {
 	/**
-	 * The day constants
-	 */
-	const SUNDAY    = 0;
-	const MONDAY    = 1;
-	const TUESDAY   = 2;
-	const WEDNESDAY = 3;
-	const THURSDAY  = 4;
-	const FRIDAY    = 5;
-	const SATURDAY  = 6;
-
-	/**
 	 * The template method to be used in the between calculation.
 	 *
 	 * Returns an array of Holidays.
@@ -123,42 +112,7 @@ class America extends Calculator
 	 */
 	protected function getColumbusDay($year)
 	{
-		$columbusDay = new DateTime('now', $this->timezone);
-		$columbusDay->setDate($year, 10, 1);
-		$columbusDay->setTime(0, 0, 0);
-		$dayOfWeek = intval($columbusDay->format('w'));
-
-		// Add days from beginning of the month according to day of the week
-		if ($dayOfWeek == self::MONDAY)
-		{
-			$columbusDay->modify('+7 days');
-		}
-		else if ($dayOfWeek == self::TUESDAY)
-		{
-			$columbusDay->modify('+13 days');
-		}
-		else if ($dayOfWeek == self::WEDNESDAY)
-		{
-			$columbusDay->modify('+12 days');
-		}
-		else if ($dayOfWeek == self::THURSDAY)
-		{
-			$columbusDay->modify('+11 days');
-		}
-		else if ($dayOfWeek == self::FRIDAY)
-		{
-			$columbusDay->modify('+10 days');
-		}
-		else if ($dayOfWeek == self::SATURDAY)
-		{
-			$columbusDay->modify('+9 days');
-		}
-		else if ($dayOfWeek == self::SUNDAY)
-		{
-			$columbusDay->modify('+8 day');
-		}
-
-		return $columbusDay;
+		return DateTime::createFromFormat('U', strtotime('second Monday of October '.$year), $this->timezone);
 	}
 
 	/**
@@ -169,39 +123,7 @@ class America extends Calculator
 	 */
 	protected function getLaborDay($year)
 	{
-		$laborDay = new DateTime('now', $this->timezone);
-		$laborDay->setDate($year, 9, 1);
-		$laborDay->setTime(0, 0, 0);
-		$dayOfWeek = intval($laborDay->format('w'));
-
-		// Add days from beginning of the month according to day of the week
-		if ($dayOfWeek == self::TUESDAY)
-		{
-			$laborDay->modify('+6 days');
-		}
-		else if ($dayOfWeek == self::WEDNESDAY)
-		{
-			$laborDay->modify('+5 days');
-		}
-		else if ($dayOfWeek == self::THURSDAY)
-		{
-			$laborDay->modify('+4 days');
-		}
-		else if ($dayOfWeek == self::FRIDAY)
-		{
-			$laborDay->modify('+3 days');
-		}
-		else if ($dayOfWeek == self::SATURDAY)
-		{
-			$laborDay->modify('+2 days');
-		}
-		else if ($dayOfWeek == self::SUNDAY)
-		{
-			$laborDay->modify('+1 day');
-		}
-		// Monday is same day
-
-		return $laborDay;
+		return DateTime::createFromFormat('U', strtotime('first Monday of September '.$year), $this->timezone);
 	}
 
 	/**
@@ -212,39 +134,7 @@ class America extends Calculator
 	 */
 	protected function getMemorialDay($year)
 	{
-		$memorialDay = new DateTime('now', $this->timezone);
-		$memorialDay->setDate($year, 5, 31);
-		$memorialDay->setTime(0, 0, 0);
-		$dayOfWeek = intval($memorialDay->format('w'));
-
-		// Subtract days from end of the month according to day of the week
-		if ($dayOfWeek == self::TUESDAY)
-		{
-			$memorialDay->modify('-1 day');
-		}
-		else if ($dayOfWeek == self::WEDNESDAY)
-		{
-			$memorialDay->modify('-2 days');
-		}
-		else if ($dayOfWeek == self::THURSDAY)
-		{
-			$memorialDay->modify('-3 days');
-		}
-		else if ($dayOfWeek == self::FRIDAY)
-		{
-			$memorialDay->modify('-4 days');
-		}
-		else if ($dayOfWeek == self::SATURDAY)
-		{
-			$memorialDay->modify('-5 days');
-		}
-		else if ($dayOfWeek == self::SUNDAY)
-		{
-			$memorialDay->modify('-6 days');
-		}
-		// Monday is same day
-
-		return $memorialDay;
+		return DateTime::createFromFormat('U', strtotime('last Monday of May '.$year), $this->timezone);
 	}
 
 	/**
@@ -255,42 +145,7 @@ class America extends Calculator
 	 */
 	protected function getPresidentsDay($year)
 	{
-		$presidentsDay = new DateTime('now', $this->timezone);
-		$presidentsDay->setDate($year, 2, 1);
-		$presidentsDay->setTime(0, 0, 0);
-		$dayOfWeek = intval($presidentsDay->format('w'));
-
-		// Add days from beginning of the month according to day of the week
-		if ($dayOfWeek == self::MONDAY)
-		{
-			$presidentsDay->modify('+14 days');
-		}
-		else if ($dayOfWeek == self::TUESDAY)
-		{
-			$presidentsDay->modify('+20 days');
-		}
-		else if ($dayOfWeek == self::WEDNESDAY)
-		{
-			$presidentsDay->modify('+19 days');
-		}
-		else if ($dayOfWeek == self::THURSDAY)
-		{
-			$presidentsDay->modify('+18 days');
-		}
-		else if ($dayOfWeek == self::FRIDAY)
-		{
-			$presidentsDay->modify('+17 days');
-		}
-		else if ($dayOfWeek == self::SATURDAY)
-		{
-			$presidentsDay->modify('+16 days');
-		}
-		else if ($dayOfWeek == self::SUNDAY)
-		{
-			$presidentsDay->modify('+15 days');
-		}
-
-		return $presidentsDay;
+		return DateTime::createFromFormat('U', strtotime('third Monday of February '.$year), $this->timezone);
 	}
 
 	/**
@@ -301,42 +156,7 @@ class America extends Calculator
 	 */
 	protected function getMLKDay($year)
 	{
-		$mlkDay = new DateTime('now', $this->timezone);
-		$mlkDay->setDate($year, 1, 1);
-		$mlkDay->setTime(0, 0, 0);
-		$dayOfWeek = intval($mlkDay->format('w'));
-
-		// Add days from beginning of the month according to day of the week
-		if ($dayOfWeek == self::MONDAY)
-		{
-			$mlkDay->modify('+14 days');
-		}
-		else if ($dayOfWeek == self::TUESDAY)
-		{
-			$mlkDay->modify('+20 days');
-		}
-		else if ($dayOfWeek == self::WEDNESDAY)
-		{
-			$mlkDay->modify('+19 days');
-		}
-		else if ($dayOfWeek == self::THURSDAY)
-		{
-			$mlkDay->modify('+18 days');
-		}
-		else if ($dayOfWeek == self::FRIDAY)
-		{
-			$mlkDay->modify('+17 days');
-		}
-		else if ($dayOfWeek == self::SATURDAY)
-		{
-			$mlkDay->modify('+16 days');
-		}
-		else if ($dayOfWeek == self::SUNDAY)
-		{
-			$mlkDay->modify('+15 days');
-		}
-
-		return $mlkDay;
+		return DateTime::createFromFormat('U', strtotime('third Monday of January '.$year), $this->timezone);
 	}
 
 	/**
@@ -347,41 +167,6 @@ class America extends Calculator
 	 */
 	protected function getThanksgiving($year)
 	{
-		$thanksgiving = new DateTime('now', $this->timezone);
-		$thanksgiving->setDate($year, 11, 1);
-		$thanksgiving->setTime(0, 0, 0);
-		$dayOfWeek = intval($thanksgiving->format('w'));
-
-		// Add days from beginning of the month according to day of the week
-		if ($dayOfWeek == self::MONDAY)
-		{
-			$thanksgiving->modify('+24 days');
-		}
-		else if ($dayOfWeek == self::TUESDAY)
-		{
-			$thanksgiving->modify('+23 days');
-		}
-		else if ($dayOfWeek == self::WEDNESDAY)
-		{
-			$thanksgiving->modify('+22 days');
-		}
-		else if ($dayOfWeek == self::THURSDAY)
-		{
-			$thanksgiving->modify('+21 days');
-		}
-		else if ($dayOfWeek == self::FRIDAY)
-		{
-			$thanksgiving->modify('+27 days');
-		}
-		else if ($dayOfWeek == self::SATURDAY)
-		{
-			$thanksgiving->modify('+26 days');
-		}
-		else if ($dayOfWeek == self::SUNDAY)
-		{
-			$thanksgiving->modify('+25 days');
-		}
-
-		return $thanksgiving;
+		return DateTime::createFromFormat('U', strtotime('fourth Thursday of November '.$year), $this->timezone);
 	}
 }
