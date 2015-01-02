@@ -29,10 +29,14 @@ class Netherlands extends Calculator
         $data[] = new Holiday("01.01." . $year, "Nieuwjaarsdag", $timezone);
 
         if($year < 2014) {
-            $data[] = new Holiday("30.04." . $year, "Koninginnedag", $timezone);
+            $royal = new Holiday("30.04." . $year, "Koninginnedag", $timezone);
         } else {
-            $data[] = new Holiday("27.04." . $year, "Koningsdag", $timezone);
+            $royal = new Holiday("27.04." . $year, "Koningsdag", $timezone);
         }
+        if ($royal->format('N') == 7) {
+            $royal->modify('-1 day');
+        }
+        $data[] = $royal;
 
         $data[] = new Holiday("25.12." . $year, "1ste kerstdag", $timezone);
         $data[] = new Holiday("26.12." . $year, "2de kerstdag", $timezone);
