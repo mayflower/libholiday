@@ -23,13 +23,9 @@ class Netherlands extends Calculator
 
         $data   = array();
         $easter = $this->getEaster($year);
-        $data[] = new Holiday($easter, "2de paasdag", $timezone);
-        $data[0]->modify("+1 day");
-        $data[] = new Holiday($easter, "Hemelvaartsdag", $timezone);
-        $data[1]->modify("+39 days");
-        $data[] = new Holiday($easter, "2de pinksterdag", $timezone);
-        $data[2]->modify("+50 days");
-
+        $data[] = (new Holiday($easter, "2de paasdag", $timezone))->modify("+1 day");
+        $data[] = (new Holiday($easter, "Hemelvaartsdag", $timezone))->modify("+39 days");
+        $data[] = (new Holiday($easter, "2de pinksterdag", $timezone))->modify("+50 days");
         $data[] = new Holiday("01.01." . $year, "Nieuwjaarsdag", $timezone);
 
         if($year < 2014) {
@@ -40,9 +36,9 @@ class Netherlands extends Calculator
 
         $data[] = new Holiday("25.12." . $year, "1ste kerstdag", $timezone);
         $data[] = new Holiday("26.12." . $year, "2de kerstdag", $timezone);
-        
 
-        return array_merge($data, $this->getSpecial($year, $timezone));
+
+        return array_merge($data, $this->getSpecial($year));
     }
 
     private function getSpecial($year)
@@ -52,11 +48,8 @@ class Netherlands extends Calculator
         $data   = array();
         $easter = $this->getEaster($year);
 
-        $data[] = new Holiday($easter, "1ste pinksterdag", $timezone, NOTABLE);
-        $data[0]->modify("+49 days");
-
         $data[] = new Holiday($easter, "1ste paasdag", $timezone, NOTABLE);
-
+        $data[] = (new Holiday($easter, "1ste pinksterdag", $timezone, NOTABLE))->modify("+49 days");
         $data[] = new Holiday("24.12." . $year, "Kerstavond", $timezone, NOTABLE, 0.5);
         $data[] = new Holiday("31.12." . $year, "Oudejaarsavond", $timezone, NOTABLE, 0.5);
 
