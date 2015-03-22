@@ -47,12 +47,12 @@ class Sweden extends Calculator
 
         $data[] = (new Holiday($easter, "Pingstdagen", $timezone))->modify("+49 days");
 
-        $midSummerDay = $this->getMidSummerDay($year);
+        $midSummerDay = $this->getMidSummerDay($year, $timezone);
         $data[] = (new Holiday($midSummerDay, "Midsommarafton", $timezone))->modify("-1 day");
         $data[] = new Holiday($midSummerDay, "Midsommardagen", $timezone);
 
 
-        $allSaintsDay = $this->getAllSaintsDay($year);
+        $allSaintsDay = $this->getAllSaintsDay($year, $timezone);
         $data[] = (new Holiday($allSaintsDay, "Allhelgonaafton", $timezone, NOTABLE, 0.5))->modify("-1 day");
         $data[] = new Holiday($allSaintsDay, "Alla helgons dag", $timezone);
 
@@ -68,9 +68,9 @@ class Sweden extends Calculator
     /**
      * the Swedish midsummer day is the saturday between 20 and 26:th of June
      */
-    public function getMidSummerDay($year)
+    public function getMidSummerDay($year, $timezone)
     {
-        $date = new \DateTime($year.'-06-20');
+        $date = new \DateTime($year.'-06-20', $timezone);
         for ($i = 0; $i < 7; $i++) {
             if ($date->format('w') == 6) {
                 break;
@@ -84,9 +84,9 @@ class Sweden extends Calculator
     /**
      * the Swedish 'alla helgons dag' is the saturday between 31 October and 6:th of November
      */
-    public function getAllSaintsDay($year)
+    public function getAllSaintsDay($year, $timezone)
     {
-        $date = new \DateTime($year.'-10-31');
+        $date = new \DateTime($year.'-10-31', $timezone);
         for ($i = 0; $i < 7; $i++) {
             if ($date->format('w') == 6) {
                 break;
