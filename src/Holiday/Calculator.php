@@ -46,7 +46,7 @@ abstract class Calculator
      *
      * @param int $year The year for which to calculcate the easter sunday date.
      *
-     * @return DateTime
+     * @return \DateTime
      *
      * TODO: add timezone calculation
      */
@@ -62,8 +62,8 @@ abstract class Calculator
     /**
      * Returns all holidays in the given time period.
      *
-     * @param DateTime $start The start date
-     * @param DateTime $end   The end date
+     * @param \DateTime $start The start date
+     * @param \DateTime $end   The end date
      *
      * @return array
      */
