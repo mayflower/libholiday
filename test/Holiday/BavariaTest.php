@@ -15,8 +15,6 @@
 namespace Holiday\Test;
 use Holiday;
 
-require_once "vendor/autoload.php";
-
 class BavariaTest extends \PHPUnit_Framework_TestCase
 {
     public function testEasterBug() {

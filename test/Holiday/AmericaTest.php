@@ -19,8 +19,6 @@ use DateTimeZone;
 use Holiday\America;
 use PHPUnit_Framework_TestCase;
 
-require_once "vendor/autoload.php";
-
 class AmericaTest extends PHPUnit_Framework_TestCase
 {
     /**

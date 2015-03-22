@@ -44,7 +44,7 @@ abstract class Calculator
      * The DateTime object is always set to the current default timezone and
      * not UTC and time is set 0:00.
      *
-     * @param int $year The year for which to calculcate the easter sunday date.
+     * @param int $year The year for which to calculate the easter sunday date.
      *
      * @return \DateTime
      *
