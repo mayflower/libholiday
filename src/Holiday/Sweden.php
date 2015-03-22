@@ -38,20 +38,21 @@ class Sweden extends Calculator
         $data[] = new Holiday("30.04." . $year, "Valborgsmässoafton", $timezone, NOTABLE, 0.5);
         $data[] = new Holiday("01.05." . $year, "Första maj", $timezone);
 
-        $data[] = (new Holiday($easter, "Kristi himmelsfärdsdag", $timezone))->modify("+39 days");
 
         $data[] = new Holiday("06.06." . $year, "Sveriges nationaldag", $timezone);
+
+        $data[] = (new Holiday($easter, "Kristi himmelsfärdsdag", $timezone))->modify("+39 days");
 
         $data[] = (new Holiday($easter, "Pingstafton", $timezone))->modify("+48 days");
 
         $data[] = (new Holiday($easter, "Pingstdagen", $timezone))->modify("+49 days");
 
-        $midSummerDay = $this->getMidSummerDay($year, $timezone);
+        $midSummerDay = $this->getMidSummerDay($year);
         $data[] = (new Holiday($midSummerDay, "Midsommarafton", $timezone))->modify("-1 day");
         $data[] = new Holiday($midSummerDay, "Midsommardagen", $timezone);
 
 
-        $allSaintsDay = $this->getAllSaintsDay($year, $timezone);
+        $allSaintsDay = $this->getAllSaintsDay($year);
         $data[] = (new Holiday($allSaintsDay, "Allhelgonaafton", $timezone, NOTABLE, 0.5))->modify("-1 day");
         $data[] = new Holiday($allSaintsDay, "Alla helgons dag", $timezone);
 
@@ -67,9 +68,9 @@ class Sweden extends Calculator
     /**
      * the Swedish midsummer day is the saturday between 20 and 26:th of June
      */
-    public function getMidSummerDay($year, $timezone)
+    public function getMidSummerDay($year)
     {
-        $date = new \DateTime('20.06.'.$year, $timezone);
+        $date = new \DateTime($year.'-06-20');
         for ($i = 0; $i < 7; $i++) {
             if ($date->format('w') == 6) {
                 break;
@@ -80,13 +81,12 @@ class Sweden extends Calculator
         return $date;
     }
 
-
     /**
      * the Swedish 'alla helgons dag' is the saturday between 31 October and 6:th of November
      */
-    public function getAllSaintsDay($year, $timezone)
+    public function getAllSaintsDay($year)
     {
-        $date = new \DateTime('31.10.'.$year, $timezone);
+        $date = new \DateTime($year.'-10-31');
         for ($i = 0; $i < 7; $i++) {
             if ($date->format('w') == 6) {
                 break;
