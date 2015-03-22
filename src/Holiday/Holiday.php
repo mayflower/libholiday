@@ -34,10 +34,11 @@ class Holiday extends \DateTime
     /**
      * Creates a new Holiday.
      *
-     * @param mixed        $time     The day of the holiday
-     * @param DateTimezone $timezone The timezone of the holiday
-     * @param int          $type     HOLIDAY, SCHOOL_HOLIDAY or SPECIAL
-     * @param float        $weight   Positive float.
+     * @param mixed $time The day of the holiday
+     * @param string $name
+     * @param \DateTimeZone $timezone The timezone of the holiday
+     * @param int|string $type HOLIDAY, SCHOOL_HOLIDAY or SPECIAL
+     * @param float $weight Positive float.
      */
     public function __construct($time, $name, \DateTimeZone $timezone = null, $type = HOLIDAY, $weight = null)
     {
