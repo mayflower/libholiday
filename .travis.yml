@@ -4,6 +4,7 @@ php:
   - 5.4
   - 5.5
   - 5.6
+  - 7.0
   - hhvm-nightly
 
 matrix:
@@ -13,4 +14,4 @@ matrix:
 before_script:
   - composer --prefer-source --dev install
 script:
-  - phpunit test
+  - phpunit
