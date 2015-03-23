@@ -36,7 +36,7 @@ class Netherlands extends Calculator
         if ($royal->format('N') == 7) {
             $royal->modify('-1 day');
         }
-        if ($this->isRound($year/5) === true) {
+        if ($year % 5 == 0)
             $data[] = new Holiday("05.05." . $year, "Bevrijdingsdag", $timezone);
         }
         $data[] = $royal;
@@ -48,10 +48,6 @@ class Netherlands extends Calculator
         return array_merge($data, $this->getSpecial($year));
     }
     
-    protected function isRound($value) {
-        return is_numeric($value) && intval($value) == $value;
-    }
-
     private function getSpecial($year)
     {
         $timezone = $this->timezone;
