@@ -36,7 +36,7 @@ class Netherlands extends Calculator
         if ($royal->format('N') == 7) {
             $royal->modify('-1 day');
         }
-        if ($year % 5 == 0)
+        if ($year % 5 == 0) {
             $data[] = new Holiday("05.05." . $year, "Bevrijdingsdag", $timezone);
         }
         $data[] = $royal;
