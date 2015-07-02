@@ -55,6 +55,7 @@ class Netherlands extends Calculator
         $data   = array();
         $easter = $this->getEaster($year);
 
+        $data[] = (new Holiday($easter, "goede vrijdag", $timezone, NOTABLE))->modify('-2 days');
         $data[] = new Holiday($easter, "1ste paasdag", $timezone, NOTABLE);
         $data[] = (new Holiday($easter, "1ste pinksterdag", $timezone, NOTABLE))->modify("+49 days");
         $data[] = new Holiday("24.12." . $year, "Kerstavond", $timezone, NOTABLE, 0.5);
