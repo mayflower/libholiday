@@ -80,7 +80,7 @@ abstract class Calculator
         $endyear   = (int) $end->format("Y");
         $holidays  = array();
         for ($y = $startyear; $y <= $endyear; $y++) {
-            $holidays = array_merge($holidays, $this->getHolidays($y, $this->timezone));
+            $holidays = array_merge($holidays, $this->getHolidays($y));
         }
 
         return array_filter($holidays,

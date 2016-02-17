@@ -20,6 +20,7 @@ class Germany extends Calculator
     {
         $timezone = $this->timezone;
 
+        /** @var Holiday[] $data */
         $data   = array();
         $easter = $this->getEaster($year);
         $data[] = new Holiday($easter, "Karfreitag", $timezone);
@@ -37,13 +38,14 @@ class Germany extends Calculator
         $data[] = new Holiday("25.12." . $year, "1. Weihnachtsfeiertag", $timezone);
         $data[] = new Holiday("26.12." . $year, "2. Weihnachtsfeiertag", $timezone);
 
-        return array_merge($data, $this->getSpecial($year, $timezone));
+        return array_merge($data, $this->getSpecial($year));
     }
 
     private function getSpecial($year)
     {
         $timezone = $this->timezone;
 
+        /** @var Holiday[] $data */
         $data   = array();
         $easter = $this->getEaster($year);
 

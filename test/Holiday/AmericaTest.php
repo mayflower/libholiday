@@ -31,7 +31,7 @@ class AmericaTest extends PHPUnit_Framework_TestCase
      */
     private $timezone = null;
 
-    function __construct()
+    public function setUp()
     {
         $this->timezone = new DateTimeZone('UTC');
         $this->holiday = new America($this->timezone);
