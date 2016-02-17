@@ -16,12 +16,33 @@ namespace Holiday;
 
 class Germany extends Calculator
 {
+    /**
+     * Get public holidays valid in states of Germany as well as special holidays not valid in states of Germany.
+     * @param int $year
+     * @return array
+     */
     protected function getHolidays($year)
+    {
+        return array_merge(
+            $this->getPublicHolidays($year),
+            $this->getSpecial($year)
+        );
+    }
+
+    /**
+     * Get _public holidays_ only. Not in all states of Germany days from getSpecial() are public holidays.
+     *
+     * Moved to dedicated method in order to retain compatibility of getHolidays() with existing code.
+     *
+     * @param int $year Year
+     * @return Holiday[]
+     */
+    protected function getPublicHolidays($year)
     {
         $timezone = $this->timezone;
 
         /** @var Holiday[] $data */
-        $data   = array();
+        $data = array();
         $easter = $this->getEaster($year);
         $data[] = new Holiday($easter, "Karfreitag", $timezone);
         $data[0]->modify("-2 days");
@@ -38,7 +59,7 @@ class Germany extends Calculator
         $data[] = new Holiday("25.12." . $year, "1. Weihnachtsfeiertag", $timezone);
         $data[] = new Holiday("26.12." . $year, "2. Weihnachtsfeiertag", $timezone);
 
-        return array_merge($data, $this->getSpecial($year));
+        return $data;
     }
 
     private function getSpecial($year)
