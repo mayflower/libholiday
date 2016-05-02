@@ -14,7 +14,7 @@
  */
 namespace Holiday;
 
-class Bavaria extends Germany
+class BadenWuerttemberg extends Germany
 {
     protected function getHolidays($year)
     {
@@ -28,7 +28,10 @@ class Bavaria extends Germany
         $date->modify("+60 days");
         $data[] = $date;
 
-        $data[] = new Holiday("15.8." . $year, "Mariä Himmelfahrt", $timezone);
+        if($year == 2017) {
+            $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
+        }
+
         $data[] = new Holiday("1.11." . $year, "Allerheiligen", $timezone);
 
         return $data;

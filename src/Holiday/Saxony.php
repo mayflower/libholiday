@@ -14,22 +14,20 @@
  */
 namespace Holiday;
 
-class Bavaria extends Germany
+class Saxony extends Germany
 {
     protected function getHolidays($year)
     {
         $timezone = $this->timezone;
 
-        $easter = $this->getEaster($year);
         $data   = parent::getHolidays($year);
-        $data[] = new Holiday("6.1." . $year, "Heilige Drei Könige", $timezone);
 
-        $date   = new Holiday($easter, "Fronleichnam", $timezone);
-        $date->modify("+60 days");
+        $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
+
+        $date = new Holiday("23.11." . $year, "Buß- und Bettag", $timezone);
+        $date->modify('last Wednesday');
+
         $data[] = $date;
-
-        $data[] = new Holiday("15.8." . $year, "Mariä Himmelfahrt", $timezone);
-        $data[] = new Holiday("1.11." . $year, "Allerheiligen", $timezone);
 
         return $data;
     }

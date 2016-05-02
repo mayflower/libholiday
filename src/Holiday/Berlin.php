@@ -14,23 +14,6 @@
  */
 namespace Holiday;
 
-class Bavaria extends Germany
+class Berlin extends Germany
 {
-    protected function getHolidays($year)
-    {
-        $timezone = $this->timezone;
-
-        $easter = $this->getEaster($year);
-        $data   = parent::getHolidays($year);
-        $data[] = new Holiday("6.1." . $year, "Heilige Drei Könige", $timezone);
-
-        $date   = new Holiday($easter, "Fronleichnam", $timezone);
-        $date->modify("+60 days");
-        $data[] = $date;
-
-        $data[] = new Holiday("15.8." . $year, "Mariä Himmelfahrt", $timezone);
-        $data[] = new Holiday("1.11." . $year, "Allerheiligen", $timezone);
-
-        return $data;
-    }
 }
