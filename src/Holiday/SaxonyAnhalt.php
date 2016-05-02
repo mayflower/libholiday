@@ -21,7 +21,7 @@ class SaxonyAnhalt extends Germany
         $timezone = $this->timezone;
 
         $data   = parent::getHolidays($year);
-        $data[] = new Holiday("6.1." . $year, "Dreikönigstag", $timezone);
+        $data[] = new Holiday("6.1." . $year, "Heilige Drei Könige", $timezone);
 
         $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
 

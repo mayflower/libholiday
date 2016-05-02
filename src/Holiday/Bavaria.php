@@ -22,7 +22,7 @@ class Bavaria extends Germany
 
         $easter = $this->getEaster($year);
         $data   = parent::getHolidays($year);
-        $data[] = new Holiday("6.1." . $year, "Dreikönigstag", $timezone);
+        $data[] = new Holiday("6.1." . $year, "Heilige Drei Könige", $timezone);
 
         $date   = new Holiday($easter, "Fronleichnam", $timezone);
         $date->modify("+60 days");
