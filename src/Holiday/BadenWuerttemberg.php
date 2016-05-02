@@ -28,6 +28,10 @@ class BadenWuerttemberg extends Germany
         $date->modify("+60 days");
         $data[] = $date;
 
+        if($year == 2017) {
+            $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
+        }
+
         $data[] = new Holiday("1.11." . $year, "Allerheiligen", $timezone);
 
         return $data;
