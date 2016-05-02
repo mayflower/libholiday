@@ -24,13 +24,7 @@ class Saxony extends Germany
 
         $data[] = new Holiday("31.10." . $year, "Reformationstag", $timezone);
 
-        $date = new Holiday("24.12." . $year, "Buß- und Bettag", $timezone);
-
-        if((int)$date->format('N') < 7) {
-            $date->modify('last Sunday');
-        }
-
-        $date->modify('-4 weeks');
+        $date = new Holiday("23.11." . $year, "Buß- und Bettag", $timezone);
         $date->modify('last Wednesday');
 
         $data[] = $date;
