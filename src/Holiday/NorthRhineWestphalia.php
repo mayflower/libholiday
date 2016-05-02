@@ -21,6 +21,7 @@ class NorthRhineWestphalia extends Germany
         $timezone = $this->timezone;
 
         $easter = $this->getEaster($year);
+        $data   = parent::getHolidays($year);
 
         $date   = new Holiday($easter, "Fronleichnam", $timezone);
         $date->modify("+60 days");
