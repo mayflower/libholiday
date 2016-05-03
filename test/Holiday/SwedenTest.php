@@ -16,15 +16,23 @@ namespace Holiday\Test;
 
 use DateTime;
 use DateTimeZone;
+use Holiday\Calculator;
 use Holiday\Sweden;
 use PHPUnit_Framework_TestCase;
 
 class SwedenTest extends PHPUnit_Framework_TestCase
 {
-    /** @var DateTimeZone */
-    var $timezone;
+    /**
+     * @var DateTimeZone
+     */
+    protected $timezone;
 
-    public function __construct()
+    /**
+     * @var Calculator
+     */
+    protected $holiday;
+
+    public function setUp()
     {
         $this->timezone = new DateTimeZone('Europe/Stockholm');
         $this->holiday = new Sweden($this->timezone);
