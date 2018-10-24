@@ -7,8 +7,7 @@ A library to calculate holidays.
 Supported countries and states
 
 * America
-* Germany
-  * Hamburg, Saarland, BadenWuerttemberg, Hesse, SaxonyAnhalt, Bavaria, Saxony, Berlin, LowerSaxony, SchleswigHolstein, Brandenburg, MecklenburgWesternPomerania, Bremen, Thuringia, NorthRhineWestphalia, RhinelandPalatinate
+* Germany and all constituent states
 * Sweden
 * Netherlands
 
