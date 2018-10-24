@@ -1,3 +1,17 @@
+[![Build Status](https://travis-ci.org/mayflower/libholiday.svg?branch=master)](https://travis-ci.org/mayflower/libholiday)
+
+A library to calculate holidays.
+
+Supported countries and states
+
+* America
+* Germany
+  * Hamburg, Saarland, BadenWuerttemberg, Hesse, SaxonyAnhalt, Bavaria, Saxony, Berlin, LowerSaxony, SchleswigHolstein, Brandenburg, MecklenburgWesternPomerania, Bremen, Thuringia, NorthRhineWestphalia, RhinelandPalatinate
+* Sweden
+* Netherlands
+
+Usage
+
 Add to your projects ```composer.json```
 
 ```json
