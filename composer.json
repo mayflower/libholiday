@@ -12,7 +12,7 @@
         "psr-0": {"Holiday": "src/"}
     },
     "require": {
-        "php": ">= 5.4",
+        "php": "^5.4 || ^7.0",
         "ext-calendar": "*"
     },
     "require-dev": {
