@@ -13,22 +13,7 @@ Supported countries and states
 
 Usage
 
-Add to your projects ```composer.json```
-
-```json
-{
-    "name": "your/project",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/mayflower/libholiday"
-        }
-    ],
-    "require": {
-        "mayflower/holiday": "^0.7"
-    }
-}
-```
+```composer require mayflower/holiday```
 
 And then use like
 
