@@ -11,11 +11,11 @@ Supported countries and states
 * Sweden
 * Netherlands
 
-Usage
+Installation
 
 ```composer require mayflower/holiday```
 
-And then use like
+Usage
 
 ```php
 <?php
