@@ -16,4 +16,13 @@ namespace Holiday;
 
 class Berlin extends Germany
 {
+    protected function getHolidays($year)
+    {
+        $timezone = $this->timezone;
+
+        $data   = parent::getHolidays($year);
+        $data[] = new Holiday("08.03." . $year, "Frauentag", $timezone);
+
+        return $data;
+    }
 }
